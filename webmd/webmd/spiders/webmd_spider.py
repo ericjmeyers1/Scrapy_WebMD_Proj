@@ -67,8 +67,8 @@ class WebMDSpider(Spider):
             effectiveness = int(review.xpath('.//span[@class="current-rating"]/text()').extract()[0].strip()[16:])
             easeofuse = int(review.xpath('.//span[@class="current-rating"]/text()').extract()[1].strip()[16:])
             satisfaction = int(review.xpath('.//span[@class="current-rating"]/text()').extract()[2].strip()[16:])
-            comment = review.xpath('.//p[@id="comTrunc1"][@class="comment"]/text()').extract_first()
-            helpful = int(review.xpath('.//p[@class="helpful"]/text()').extract_first()[0])
+            comment = review.xpath('//p[@class="comment"]/text()').extract_first()
+            helpful = int(review.xpath('//p[@class="helpful"]/text()').extract_first()[:3].strip())
 
         # create review item
             item = WebmdItem()
